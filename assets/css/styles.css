@@ -1,10 +1,10 @@
 /*
    Витрина магазина цифровых товаров.
-   Все размеры и цвета сняты с фигмы (контейнер 1200, шапка 80, карточка 227×294 и т.д.),
-   поэтому в коде много «некруглых» чисел вроде 13.5px — так в макете.
+   Размеры и цвета сняты с фигмы (контейнер 1200, шапка 80, обложка карточки 152
+   и т.д.), поэтому в коде попадаются «некруглые» числа вроде 13.5px — так в макете.
 
-   Раскладка резиновая: контейнер тянется до 1200, дальше вступают брейкпоинты
-   в конце файла — от планшета до телефона.
+   Раскладка при этом резиновая: контейнер тянется до 1200, ниже вступают
+   брейкпоинты в конце файла — от планшета до телефона.
 */
 
 :root {
@@ -386,8 +386,9 @@ a { color: inherit; text-decoration: none; }
   height: 76px;
   border-radius: 18px;
   padding: 2px;
-  /* 4. Волна: --wave (0..1) ставит JS по расстоянию от курсора,
-        поэтому подъём достаётся и соседним плиткам, а не только той, что под мышью */
+  /* Пункт 4 из ТЗ. Волну ведёт --wave (0..1) — его ставит JS по расстоянию
+     от курсора, поэтому подъём достаётся и соседним плиткам, а не только той,
+     что под мышью */
   transform:
     translateY(calc(var(--wave, 0) * -10px))
     scale(calc(1 + var(--wave, 0) * .1));
@@ -625,8 +626,8 @@ a { color: inherit; text-decoration: none; }
   transition: transform .12s ease-out, box-shadow .25s ease;
 }
 
-/* 5. Наведение: подъём, тень поглубже, слои внутри выезжают вперёд,
-      за курсором едет мягкое пятно света (--mx/--my ставит JS) */
+/* Пункт 5 из ТЗ. Подъём, тень поглубже, слои внутри выезжают вперёд,
+   за курсором едет мягкое пятно света (--mx/--my ставит JS) */
 .card:hover {
   --ty: -6px;
   z-index: 2;
@@ -1035,8 +1036,11 @@ a { color: inherit; text-decoration: none; }
 }
 .order-pay .btn:disabled { opacity: .5; cursor: default; }
 
-.btn--ghost {
+/* На витрине .btn--ghost уже занят кнопкой «Показать все», поэтому
+   свой вариант держим в границах страницы заказа */
+.order .btn--ghost {
   height: 64px;
+  margin-left: 0;
   border: 1px solid var(--line-2);
   border-radius: 12px;
   background: var(--white);
@@ -1044,7 +1048,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 15px;
   font-weight: 700;
 }
-.btn--ghost:hover { border-color: #D8DCE4; color: var(--text); }
+.order .btn--ghost:hover { background: var(--white); border-color: #D8DCE4; color: var(--text); }
 
 .order-hint {
   grid-column: 1 / -1;
@@ -1082,7 +1086,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--text-2);
   user-select: all;
 }
-.order-key .btn--ghost { flex: none; height: 48px; padding: 0 20px; }
+.order .order-key__row .btn--ghost { flex: none; height: 48px; padding: 0 20px; }
 
 .order-note {
   margin: 20px 0 0;
@@ -1209,7 +1213,7 @@ a { color: inherit; text-decoration: none; }
   .order-card { padding: 20px 16px; }
   .order-card__head { flex-wrap: wrap; }
   .order-key__row { flex-direction: column; align-items: stretch; }
-  .order-key .btn--ghost { width: 100%; }
+  .order .order-key__row .btn--ghost { width: 100%; }
   .order-key__code { font-size: 17px; }
 
   .footer { padding: 20px 16px; }

@@ -31,8 +31,9 @@ final class Db
         self::$pdo = new PDO($dsn, $c['user'], $c['password'], [
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            // Нужны настоящие подготовленные выражения: с эмуляцией
-            // MySQL иначе видит запрос как текст и SKIP LOCKED ведёт себя непредсказуемо
+            // Настоящие подготовленные выражения, а не эмуляция: параметры уходят
+            // на сервер отдельно от текста запроса, и числа остаются числами —
+            // иначе условные UPDATE, на которых всё держится, сравнивают строки
             PDO::ATTR_EMULATE_PREPARES   => false,
         ]);
 

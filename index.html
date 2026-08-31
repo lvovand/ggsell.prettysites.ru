@@ -160,8 +160,9 @@
 
 <main class="page">
 
-  <!-- 1. Баннер-карусель. В макете картинки не было (чёрный прямоугольник),
-       поэтому слайды собраны градиентами — структура и поведение важнее содержимого. -->
+  <!-- Баннер-карусель, пункт 1 интерактива из ТЗ. В макете картинки не было
+       (чёрный прямоугольник), поэтому слайды собраны градиентами —
+       структура и поведение важнее содержимого. -->
   <section class="banner" id="banner">
     <div class="banner__track">
       <div class="banner__slide slide--1 is-current">
@@ -220,7 +221,7 @@
     <div class="banner__dots" role="tablist" aria-label="Слайды"></div>
   </section>
 
-  <!-- 2. Иконки сервисов + блок пополнения Steam -->
+  <!-- Иконки сервисов и блок пополнения Steam -->
   <section class="services-card">
     <div class="services">
           <button class="service" type="button" style="--ring: #1482B3">
@@ -307,7 +308,7 @@
           <span class="field__label">Сумма</span>
           <span class="field__value" id="amountValue">500₽</span>
         </div>
-        <!-- 3. Переключатель валют: только визуальное состояние, пересчёта по ТЗ не требуется -->
+        <!-- Переключатель валют (пункт 3): только активное состояние, пересчёт по ТЗ не нужен -->
         <div class="currency" id="currency">
           <button class="currency__btn is-active" type="button" data-cur="$">$</button>
           <button class="currency__btn" type="button" data-cur="₸">₸</button>
@@ -319,7 +320,7 @@
     </div>
   </section>
 
-  <!-- 4. Ряды товаров -->
+  <!-- Ряды товаров -->
   <section class="products">
     <div class="products__head">
       <h2 class="section-title">Популярные товары</h2>
@@ -344,7 +345,7 @@
               <span class="card__price-now">500 ₽</span>
               <span class="card__price-old">950 ₽</span>
             </p>
-            <button class="btn btn--buy" type="button" data-sku="STEAM-TOPUP-500" data-price="500">Купить</button>
+            <button class="btn btn--buy" type="button">Купить</button>
           </div>
         </article>
         <article class="card" data-sku="KEY-CS2-PRIME">
@@ -355,7 +356,7 @@
               <span class="card__price-now">1 290 ₽</span>
               <span class="card__price-old">2 450 ₽</span>
             </p>
-            <button class="btn btn--buy" type="button" data-sku="KEY-CS2-PRIME" data-price="1290">Купить</button>
+            <button class="btn btn--buy" type="button">Купить</button>
           </div>
         </article>
         <article class="card" data-sku="KEY-GTA5">
@@ -366,7 +367,7 @@
               <span class="card__price-now">1 990 ₽</span>
               <span class="card__price-old">3 780 ₽</span>
             </p>
-            <button class="btn btn--buy" type="button" data-sku="KEY-GTA5" data-price="1990">Купить</button>
+            <button class="btn btn--buy" type="button">Купить</button>
           </div>
         </article>
         <article class="card" data-sku="SUB-DISCORD-1M">
@@ -379,7 +380,7 @@
               <span class="card__price-now">399 ₽</span>
               <span class="card__price-old">750 ₽</span>
             </p>
-            <button class="btn btn--buy" type="button" data-sku="SUB-DISCORD-1M" data-price="399">Купить</button>
+            <button class="btn btn--buy" type="button">Купить</button>
           </div>
         </article>
         <article class="card" data-sku="GIFT-PSN-1000">
@@ -392,7 +393,7 @@
               <span class="card__price-now">1 000 ₽</span>
               <span class="card__price-old">1 900 ₽</span>
             </p>
-            <button class="btn btn--buy" type="button" data-sku="GIFT-PSN-1000" data-price="1000">Купить</button>
+            <button class="btn btn--buy" type="button">Купить</button>
           </div>
         </article>
     </div>
@@ -412,7 +413,7 @@
               <span class="card__price-now">3 490 ₽</span>
               <span class="card__price-old">6 630 ₽</span>
             </p>
-            <button class="btn btn--buy" type="button" data-sku="KEY-EFT" data-price="3490">Купить</button>
+            <button class="btn btn--buy" type="button">Купить</button>
           </div>
         </article>
         <article class="card" data-sku="SUB-YT-3M">
@@ -425,7 +426,7 @@
               <span class="card__price-now">1 490 ₽</span>
               <span class="card__price-old">2 830 ₽</span>
             </p>
-            <button class="btn btn--buy" type="button" data-sku="SUB-YT-3M" data-price="1490">Купить</button>
+            <button class="btn btn--buy" type="button">Купить</button>
           </div>
         </article>
         <article class="card" data-sku="GIFT-XBOX-1500">
@@ -438,7 +439,7 @@
               <span class="card__price-now">1 500 ₽</span>
               <span class="card__price-old">2 850 ₽</span>
             </p>
-            <button class="btn btn--buy" type="button" data-sku="GIFT-XBOX-1500" data-price="1500">Купить</button>
+            <button class="btn btn--buy" type="button">Купить</button>
           </div>
         </article>
         <article class="card" data-sku="STEAM-TOPUP-1000">
@@ -451,7 +452,7 @@
               <span class="card__price-now">1 000 ₽</span>
               <span class="card__price-old">1 900 ₽</span>
             </p>
-            <button class="btn btn--buy" type="button" data-sku="STEAM-TOPUP-1000" data-price="1000">Купить</button>
+            <button class="btn btn--buy" type="button">Купить</button>
           </div>
         </article>
         <article class="card" data-sku="SUB-SPOTIFY-1M">
@@ -464,7 +465,7 @@
               <span class="card__price-now">299 ₽</span>
               <span class="card__price-old">560 ₽</span>
             </p>
-            <button class="btn btn--buy" type="button" data-sku="SUB-SPOTIFY-1M" data-price="299">Купить</button>
+            <button class="btn btn--buy" type="button">Купить</button>
           </div>
         </article>
     </div>
@@ -473,6 +474,8 @@
   <section class="products">
     <div class="products__head">
       <h2 class="section-title">Другие товары</h2>
+      <!-- Каталог из ТЗ — 12 позиций, поэтому подборки пересекаются:
+           один и тот же товар выглядит одинаково в любом ряду -->
       <button class="btn btn--ghost" type="button">Показать все</button>
     </div>
     <div class="grid">
@@ -486,7 +489,7 @@
               <span class="card__price-now">890 ₽</span>
               <span class="card__price-old">1 690 ₽</span>
             </p>
-            <button class="btn btn--buy" type="button" data-sku="GIFT-ROBLOX-800" data-price="890">Купить</button>
+            <button class="btn btn--buy" type="button">Купить</button>
           </div>
         </article>
         <article class="card" data-sku="STEAM-TOPUP-2500">
@@ -499,18 +502,18 @@
               <span class="card__price-now">2 500 ₽</span>
               <span class="card__price-old">4 750 ₽</span>
             </p>
-            <button class="btn btn--buy" type="button" data-sku="STEAM-TOPUP-2500" data-price="2500">Купить</button>
+            <button class="btn btn--buy" type="button">Купить</button>
           </div>
         </article>
         <article class="card" data-sku="KEY-CS2-PRIME">
-            <img class="card__media" src="assets/img/pubg.jpg" alt="" loading="lazy">
+            <img class="card__media" src="assets/img/zombie.jpg" alt="" loading="lazy">
           <div class="card__body">
             <h3 class="card__title">🔫 CS2 Prime Status 🔑 STEAM KEY РФ+СНГ</h3>
             <p class="card__price">
               <span class="card__price-now">1 290 ₽</span>
               <span class="card__price-old">2 450 ₽</span>
             </p>
-            <button class="btn btn--buy" type="button" data-sku="KEY-CS2-PRIME" data-price="1290">Купить</button>
+            <button class="btn btn--buy" type="button">Купить</button>
           </div>
         </article>
         <article class="card" data-sku="KEY-GTA5">
@@ -521,7 +524,7 @@
               <span class="card__price-now">1 990 ₽</span>
               <span class="card__price-old">3 780 ₽</span>
             </p>
-            <button class="btn btn--buy" type="button" data-sku="KEY-GTA5" data-price="1990">Купить</button>
+            <button class="btn btn--buy" type="button">Купить</button>
           </div>
         </article>
         <article class="card" data-sku="SUB-DISCORD-1M">
@@ -534,13 +537,13 @@
               <span class="card__price-now">399 ₽</span>
               <span class="card__price-old">750 ₽</span>
             </p>
-            <button class="btn btn--buy" type="button" data-sku="SUB-DISCORD-1M" data-price="399">Купить</button>
+            <button class="btn btn--buy" type="button">Купить</button>
           </div>
         </article>
     </div>
   </section>
 
-  <!-- 5. Отзывы -->
+  <!-- Отзывы: сверх ТЗ, для полноты страницы -->
   <section class="reviews">
     <div class="reviews__head">
       <div>
