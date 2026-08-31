@@ -74,6 +74,25 @@
       else restart();
     });
 
+    // Свайп по баннеру: на телефоне стрелок нет, а листать чем-то надо
+    let swipeFrom = null;
+
+    banner.addEventListener('pointerdown', function (e) {
+      swipeFrom = e.pointerType === 'mouse' ? null : e.clientX;
+    });
+
+    banner.addEventListener('pointerup', function (e) {
+      if (swipeFrom === null) return;
+
+      const moved = e.clientX - swipeFrom;
+      swipeFrom = null;
+      // Порог, чтобы обычный тап по баннеру не считался листанием
+      if (Math.abs(moved) < 40) return;
+
+      show(current + (moved < 0 ? 1 : -1));
+      restart();
+    });
+
     show(0);
     restart();
   }
@@ -385,6 +404,9 @@
     });
 
     window.addEventListener('resize', function () { if (active) measure(); });
+
+    // На узком экране ряд иконок прокручивается — центры плиток уезжают
+    services.addEventListener('scroll', function () { if (active) measure(); }, { passive: true });
   }
 
 })();

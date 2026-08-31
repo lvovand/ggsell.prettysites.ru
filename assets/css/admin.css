@@ -4,9 +4,10 @@
 */
 
 .adm {
-  width: 1060px;
+  width: 100%;
+  max-width: 1060px;
   margin: 0 auto;
-  padding: 32px 0 64px;
+  padding: 32px 16px 64px;
 }
 
 .adm__top {
@@ -138,8 +139,12 @@
   font-size: 13px;
 }
 
+/* Таблицу заказов ужимать некуда — семь колонок, поэтому на узком экране
+   прокручиваем её саму, а не всю страницу */
+.tbl-wrap { overflow-x: auto; }
+
 /* Три коротких столбца незачем растягивать на всю панель */
-.tbl--narrow { width: 560px; }
+.tbl--narrow { width: 560px; max-width: 100%; }
 
 .tbl th {
   padding: 8px 10px;
@@ -161,3 +166,16 @@
 .tbl__cell--ok { color: var(--green); }
 .tbl__cell--bad { color: #D14343; }
 .tbl__cell--wait { color: var(--muted-2); }
+
+@media (max-width: 760px) {
+  .panel { padding: 16px; }
+  .panel__head { flex-wrap: wrap; gap: 12px; }
+
+  .filters { margin-left: 0; overflow-x: auto; max-width: 100%; }
+  .filter { flex: none; }
+
+  #authPanel { flex-wrap: wrap; }
+  #tokenInput { width: 100%; }
+  .panel__field { width: 100%; margin-right: 0; }
+  .panel__row { flex-wrap: wrap; }
+}

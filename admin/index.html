@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=1100">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Админка — магазин цифровых товаров</title>
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png">
@@ -38,12 +38,14 @@
         <button class="adm-btn adm-btn--ghost" type="button" id="reloadStock">Обновить</button>
       </div>
 
-      <table class="tbl tbl--narrow">
-        <thead>
-          <tr><th>Поставщик</th><th>Всего кодов</th><th>Свободно</th></tr>
-        </thead>
-        <tbody id="stockBody"></tbody>
-      </table>
+      <div class="tbl-wrap">
+        <table class="tbl tbl--narrow">
+          <thead>
+            <tr><th>Поставщик</th><th>Всего кодов</th><th>Свободно</th></tr>
+          </thead>
+          <tbody id="stockBody"></tbody>
+        </table>
+      </div>
 
       <div class="panel__row">
         <select id="refillSupplier">
@@ -71,15 +73,17 @@
         <button class="adm-btn adm-btn--ghost" type="button" id="reloadOrders">Обновить</button>
       </div>
 
-      <table class="tbl">
-        <thead>
-          <tr>
-            <th>Заказ</th><th>Товар</th><th>Сумма</th><th>Статус</th>
-            <th>Ключ</th><th>Создан</th><th></th>
-          </tr>
-        </thead>
-        <tbody id="ordersBody"></tbody>
-      </table>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th>Заказ</th><th>Товар</th><th>Сумма</th><th>Статус</th>
+              <th>Ключ</th><th>Создан</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="ordersBody"></tbody>
+        </table>
+      </div>
       <p class="panel__note" id="ordersNote" hidden></p>
     </section>
   </div>

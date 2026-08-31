@@ -3,8 +3,8 @@
    Все размеры и цвета сняты с фигмы (контейнер 1200, шапка 80, карточка 227×294 и т.д.),
    поэтому в коде много «некруглых» чисел вроде 13.5px — так в макете.
 
-   Мобильной версии по ТЗ не требуется, поэтому вёрстка desktop-only,
-   viewport зафиксирован на 1280.
+   Раскладка резиновая: контейнер тянется до 1200, дальше вступают брейкпоинты
+   в конце файла — от планшета до телефона.
 */
 
 :root {
@@ -46,12 +46,13 @@ button { font: inherit; color: inherit; cursor: pointer; }
 :focus-visible { outline: 2px solid #268BF3; outline-offset: 2px; }
 a { color: inherit; text-decoration: none; }
 
-/* Белая «подложка» страницы шириной 1280 — в макете весь контент лежит на ней */
+/* Общий контейнер: до 1200 как в макете, ниже — по ширине окна с полями */
 .page,
 .header__inner,
 .footer,
 .catalog__inner {
-  width: 1200px;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -96,7 +97,8 @@ a { color: inherit; text-decoration: none; }
 
 .search {
   position: relative;
-  width: 688px;
+  flex: 1;
+  max-width: 688px;
   height: 44px;
   border: 2px solid #000;
   border-radius: 10px;
@@ -106,7 +108,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 .search__input {
-  width: 642px;
+  flex: 1;
+  min-width: 0;
   height: 40px;
   padding: 0 46px 0 14px;
   border: 0;
@@ -600,7 +603,8 @@ a { color: inherit; text-decoration: none; }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(5, 227px);
+  /* на 1200 выходит те же пять колонок, что и в макете, дальше — сколько влезет */
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
   gap: 16px;
 }
 
@@ -752,7 +756,7 @@ a { color: inherit; text-decoration: none; }
 
 .reviews__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 16px;
 }
 
@@ -824,7 +828,6 @@ a { color: inherit; text-decoration: none; }
   border-radius: 18px;
   background: var(--white);
   box-shadow: 0 20px 50px rgba(16, 24, 40, .05);
-  width: 1200px;
 }
 
 .footer__row { display: flex; align-items: center; }
@@ -931,9 +934,10 @@ a { color: inherit; text-decoration: none; }
 /* ─ Страница заказа ─ */
 
 .order {
-  width: 640px;
+  width: 100%;
+  max-width: 640px;
   margin: 0 auto;
-  padding: 40px 0 64px;
+  padding: 40px 16px 64px;
 }
 
 .order__back {
@@ -1107,6 +1111,109 @@ a { color: inherit; text-decoration: none; }
   font-size: 15px;
   font-weight: 600;
   color: #D14343;
+}
+
+/* ─ Брейкпоинты ─
+   Макет нарисован под 1200. Ниже раскладка перестраивается по одному принципу:
+   сначала колонки становятся уже, потом схлопываются в одну, и в последнюю
+   очередь ужимаются отступы и кегли. */
+
+@media (max-width: 1232px) {
+  .page,
+  .catalog__inner { padding-left: 16px; padding-right: 16px; }
+  .footer { width: calc(100% - 32px); }
+
+  /* Отступ слева в 232px — особенность макета, на узком экране он только мешает */
+  .header__inner { padding-left: 16px; padding-right: 16px; gap: 24px; }
+}
+
+@media (max-width: 1080px) {
+  /* Одиннадцать плиток в ряд уже не помещаются, но переносить их не хочется:
+     волна за курсором считает расстояние по горизонтали и на двух рядах врёт.
+     Поэтому ряд остаётся одной строкой и прокручивается. */
+  .services {
+    justify-content: flex-start;
+    gap: 20px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    padding-bottom: 6px;
+  }
+  .service { flex: none; }
+  /* В ряду с прокруткой подпись длиннее плитки наезжает на соседнюю */
+  .service__name {
+    max-width: 76px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+  }
+
+  .topup { grid-template-columns: 1fr 1fr; }
+  .cat-cols { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 24px; }
+  .cat-col:nth-child(6) { grid-column: auto; }
+  .banner__slide { padding: 0 40px; }
+}
+
+@media (max-width: 860px) {
+  .header__inner {
+    height: auto;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  /* Поиск уходит на вторую строку целиком: в одну строку с каталогом
+     и профилем он ужимается до нечитаемого */
+  .search { order: 3; flex-basis: 100%; max-width: none; }
+
+  .banner { height: 220px; }
+  .banner__slide { padding: 0 28px; }
+  .banner__title { font-size: 26px; }
+  .banner__text { max-width: 100%; }
+
+  .topup { grid-template-columns: 1fr; }
+  .field--login, .field--amount { height: 56px; }
+
+  .catalog__inner { flex-direction: column; min-height: 0; }
+  .cat-side { width: 100%; border-right: 0; border-bottom: 1px solid #F1F2F5; }
+  .cat-main { padding: 20px 0 28px; }
+  .cat-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .products__head { flex-wrap: wrap; gap: 12px; }
+  /* Вкладок семь, на узком экране они прокручиваются, а не переносятся */
+  .chips { flex-wrap: nowrap; overflow-x: auto; max-width: 100%; padding-bottom: 4px; }
+  .chip { flex: none; }
+
+  .footer__row { flex-wrap: wrap; gap: 16px; }
+  .order-pay { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 620px) {
+  .page { padding-bottom: 24px; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+  .card__media { height: 120px; }
+  .card__title { font-size: 12px; }
+
+  .banner { height: 190px; }
+  .banner__title { font-size: 21px; }
+  .banner__sub { font-size: 13px; }
+  /* Вырез со стрелками занимает четверть узкого баннера: убираем его,
+     остаются точки и свайп */
+  .banner__nav { display: none; }
+
+  .services-card { padding: 14px; }
+  .cat-cols { grid-template-columns: 1fr; gap: 24px; }
+
+  .reviews__head { flex-direction: column; gap: 6px; }
+
+  .order { padding: 24px 12px 40px; }
+  .order-card { padding: 20px 16px; }
+  .order-card__head { flex-wrap: wrap; }
+  .order-key__row { flex-direction: column; align-items: stretch; }
+  .order-key .btn--ghost { width: 100%; }
+  .order-key__code { font-size: 17px; }
+
+  .footer { padding: 20px 16px; }
+  .footer__nav, .footer__legal { flex-wrap: wrap; gap: 12px 20px; }
 }
 
 /* ─ Уважение к системной настройке «меньше движения» ─
