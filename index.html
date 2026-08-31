@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>Магазин цифровых товаров</title>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header__inner">
+    <button class="btn btn--catalog" type="button" id="catalogBtn" aria-expanded="false" aria-controls="catalogMenu">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <rect x="2.5" y="2.5" width="5.8" height="5.8" rx="1.6" fill="#fff"/>
+        <rect x="11.7" y="2.5" width="5.8" height="5.8" rx="1.6" fill="#fff"/>
+        <rect x="2.5" y="11.7" width="5.8" height="5.8" rx="1.6" fill="#fff"/>
+        <rect x="11.7" y="11.7" width="5.8" height="5.8" rx="1.6" fill="#fff"/>
+      </svg>
+      Каталог
+    </button>
+
+    <form class="search" role="search" onsubmit="return false">
+      <input class="search__input" type="text" placeholder="Игра, приложение или услуга...">
+      <button class="search__fav" type="button" aria-label="Избранное">
+        <svg width="14" height="13" viewBox="0 0 14 13" fill="none" aria-hidden="true"><path d="M7 12.2 1.9 7.3A3.4 3.4 0 0 1 7 2.8a3.4 3.4 0 0 1 5.1 4.5L7 12.2Z" fill="#76829B"/></svg>
+      </button>
+      <button class="search__submit" type="submit" aria-label="Найти">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <circle cx="9.1" cy="9.1" r="6.6" stroke="#fff" stroke-width="2"/>
+          <path d="M14 14l3.5 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </form>
+
+    <button class="header__profile" type="button" aria-label="Профиль">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <circle cx="10" cy="5.9" r="3.9" fill="#76829B"/>
+        <path d="M3.5 17.7c0-3.4 2.9-4.9 6.5-4.9s6.5 1.5 6.5 4.9H3.5Z" fill="#76829B"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Выпадающее меню каталога. Живёт внутри шапки, чтобы клик по нему
+       не считался кликом «снаружи» и меню не закрывалось само. -->
+  <div class="catalog" id="catalogMenu" hidden>
+    <div class="catalog__inner">
+      <nav class="cat-side">
+            <button class="cat-side__item is-active" type="button">
+              Игры и игровые сервисы
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.75 4.5 11.25 9l-4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="cat-side__item" type="button">
+              Игровые ценности
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.75 4.5 11.25 9l-4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="cat-side__item" type="button">
+              Мобильные игры
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.75 4.5 11.25 9l-4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="cat-side__item" type="button">
+              Сервисы и соцсети
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.75 4.5 11.25 9l-4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="cat-side__item" type="button">
+              Программы
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.75 4.5 11.25 9l-4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+      </nav>
+      <div class="cat-main">
+        <div class="cat-cols">
+            <div class="cat-col">
+              <h3 class="cat-col__title">
+                <a href="#">Steam</a>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.75 4.5 11.25 9l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </h3>
+              <ul class="cat-col__list">
+                <li><a href="#">Игры и DLC</a></li>
+                <li><a href="#">Пополнение баланса</a></li>
+                <li><a href="#">Подарочные карты</a></li>
+                <li><a href="#">Коллекционные карточки</a></li>
+                <li><a href="#">Смена региона</a></li>
+              </ul>
+            </div>
+            <div class="cat-col">
+              <h3 class="cat-col__title">
+                <a href="#">PlayStation</a>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.75 4.5 11.25 9l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </h3>
+              <ul class="cat-col__list">
+                <li><a href="#">Игры и DLC</a></li>
+                <li><a href="#">Пополнение баланса</a></li>
+                <li><a href="#">Новые аккаунты</a></li>
+                <li><a href="#">PS Plus</a></li>
+                <li><a href="#">EA Play</a></li>
+              </ul>
+            </div>
+            <div class="cat-col">
+              <h3 class="cat-col__title">
+                <a href="#">Xbox</a>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.75 4.5 11.25 9l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </h3>
+              <ul class="cat-col__list">
+                <li><a href="#">Игры и DLC</a></li>
+                <li><a href="#">Пополнение баланса</a></li>
+                <li><a href="#">Новые аккаунты</a></li>
+                <li><a href="#">Xbox Game Pass</a></li>
+                <li><a href="#">Услуги</a></li>
+              </ul>
+            </div>
+            <div class="cat-col">
+              <h3 class="cat-col__title">
+                <a href="#">Nintendo</a>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.75 4.5 11.25 9l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </h3>
+              <ul class="cat-col__list">
+                <li><a href="#">Игры и DLC</a></li>
+                <li><a href="#">Подарочные карты</a></li>
+                <li><a href="#">Новые аккаунты</a></li>
+                <li><a href="#">NS Online</a></li>
+              </ul>
+            </div>
+            <div class="cat-col">
+              <h3 class="cat-col__title">
+                <a href="#">Battle.net</a>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.75 4.5 11.25 9l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </h3>
+              <ul class="cat-col__list">
+                <li><a href="#">World of Warcraft</a></li>
+                <li><a href="#">Подарочные карты</a></li>
+                <li><a href="#">Прямое пополнение</a></li>
+                <li><a href="#">Новые аккаунты</a></li>
+                <li><a href="#">Смена региона</a></li>
+              </ul>
+            </div>
+            <div class="cat-col">
+              <h3 class="cat-col__title">
+                <a href="#">Подборки</a>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.75 4.5 11.25 9l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </h3>
+              <ul class="cat-col__list">
+                <li><a href="#">Скидки 90%</a></li>
+                <li><a href="#">Популярные издатели</a></li>
+                <li><a href="#">Лучшие серии игр</a></li>
+                <li><a href="#">Steam Deck</a></li>
+                <li><a href="#">Bundle-наборы</a></li>
+              </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+  <!-- 1. Баннер-карусель. В макете картинки не было (чёрный прямоугольник),
+       поэтому слайды собраны градиентами — структура и поведение важнее содержимого. -->
+  <section class="banner" id="banner">
+    <div class="banner__track">
+      <div class="banner__slide slide--1 is-current">
+        <div class="banner__text">
+          <p class="banner__kicker">Пополнение Steam</p>
+          <h2 class="banner__title">Баланс на аккаунт за пару минут</h2>
+          <p class="banner__sub">Курс без скрытых комиссий, зачисление автоматом</p>
+        </div>
+      </div>
+      <div class="banner__slide slide--2">
+        <div class="banner__text">
+          <p class="banner__kicker">Ключи и активации</p>
+          <h2 class="banner__title">Более 40 000 игр в наличии</h2>
+          <p class="banner__sub">Ключ приходит сразу после оплаты</p>
+        </div>
+      </div>
+      <div class="banner__slide slide--3">
+        <div class="banner__text">
+          <p class="banner__kicker">Подписки</p>
+          <h2 class="banner__title">Discord Nitro, YouTube, Spotify</h2>
+          <p class="banner__sub">Оформляем на ваш аккаунт, без смены пароля</p>
+        </div>
+      </div>
+      <div class="banner__slide slide--4">
+        <div class="banner__text">
+          <p class="banner__kicker">Мобильные игры</p>
+          <h2 class="banner__title">Донат в Brawl Stars и PUBG Mobile</h2>
+          <p class="banner__sub">По ID аккаунта, без входа в игру</p>
+        </div>
+      </div>
+      <div class="banner__slide slide--5">
+        <div class="banner__text">
+          <p class="banner__kicker">Гифт-карты</p>
+          <h2 class="banner__title">PlayStation, Xbox, Roblox</h2>
+          <p class="banner__sub">Номиналы от 500 ₽, регион на выбор</p>
+        </div>
+      </div>
+      <div class="banner__slide slide--6">
+        <div class="banner__text">
+          <p class="banner__kicker">Гарантия</p>
+          <h2 class="banner__title">Не подошёл товар — вернём деньги</h2>
+          <p class="banner__sub">Поддержка на связи круглосуточно</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner__nav">
+      <button class="banner__arrow" type="button" data-dir="-1" aria-label="Предыдущий слайд">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M13 5.5 7.5 11l5.5 5.5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="banner__arrow" type="button" data-dir="1" aria-label="Следующий слайд">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M9 5.5 14.5 11 9 16.5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <div class="banner__dots" role="tablist" aria-label="Слайды"></div>
+  </section>
+
+  <!-- 2. Иконки сервисов + блок пополнения Steam -->
+  <section class="services-card">
+    <div class="services">
+          <button class="service" type="button" style="--ring: #1482B3">
+            <span class="service__tile"><img src="assets/img/steam.png" alt="Steam"></span>
+            <span class="service__name">Steam</span>
+          </button>
+          <button class="service" type="button" style="--ring: #45BAEE">
+            <span class="service__tile"><img src="assets/img/telegram.png" alt="Telegram"></span>
+            <span class="service__name">Telegram</span>
+          </button>
+          <button class="service" type="button" style="--ring: #B8C5FF">
+            <span class="service__tile"><img src="assets/img/roblox.png" alt="Roblox"></span>
+            <span class="service__name">Roblox</span>
+          </button>
+          <button class="service" type="button" style="--ring: #E86EFF">
+            <span class="service__tile"><img src="assets/img/brawlstars.png" alt="Brawl Stars"></span>
+            <span class="service__name">Brawl Stars</span>
+          </button>
+          <button class="service" type="button" style="--ring: #FFFFFF">
+            <span class="service__tile"><img src="assets/img/pubgm.png" alt="PUBG Mob..."></span>
+            <span class="service__name">PUBG Mob...</span>
+          </button>
+          <button class="service" type="button" style="--ring: #4ACDFF">
+            <span class="service__tile"><img src="assets/img/appstore.png" alt="App Store"></span>
+            <span class="service__name">App Store</span>
+          </button>
+          <button class="service" type="button" style="--ring: #38D4AD">
+            <span class="service__tile"><img src="assets/img/chatgpt.png" alt="ChatGPT"></span>
+            <span class="service__name">ChatGPT</span>
+          </button>
+          <button class="service" type="button" style="--ring: #117FDA">
+            <span class="service__tile"><img src="assets/img/playstation.png" alt="PlayStation"></span>
+            <span class="service__name">PlayStation</span>
+          </button>
+          <button class="service" type="button" style="--ring: #454545">
+            <span class="service__tile"><img src="assets/img/tiktok.png" alt="TikTok"></span>
+            <span class="service__name">TikTok</span>
+          </button>
+          <button class="service" type="button" style="--ring: #FFFFFF">
+            <span class="service__tile"><img src="assets/img/mobilelegends.png" alt="Mobile Leg.."></span>
+            <span class="service__name">Mobile Leg..</span>
+          </button>
+      <button class="service service--more" type="button">
+        <span class="service__tile service__tile--more">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <circle cx="14" cy="14" r="4.2" fill="#76829B"/>
+            <path d="M14 6.5c5.2 0 9.6 3 13.4 7.5-3.8 4.5-8.2 7.5-13.4 7.5S4.4 18.5.6 14C4.4 9.5 8.8 6.5 14 6.5Z" stroke="#76829B" stroke-width="1.6"/>
+          </svg>
+        </span>
+        <span class="service__name service__name--muted">еще 841</span>
+      </button>
+    </div>
+
+    <hr class="services-card__divider">
+
+    <div class="topup" data-sku="STEAM-TOPUP-500">
+      <div class="topup__app">
+        <span class="service__tile" style="--ring: #1482B3"><img src="assets/img/steam.png" alt="Steam"></span>
+        <div class="topup__app-text">
+          <p class="topup__app-title">Пополнение Steam <span class="badge">5%</span></p>
+          <button class="promo-btn" type="button" id="promoBtn">
+            Ввести промокод
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 3 7.5 6l-3 3" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <label class="promo-field" id="promoField" hidden>
+            <input type="text" id="promoInput" placeholder="Промокод" maxlength="32" autocomplete="off">
+          </label>
+          <p class="promo-note" id="promoNote" hidden></p>
+        </div>
+      </div>
+
+      <label class="field field--login">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <circle cx="10" cy="5.9" r="3.9" fill="#76829B"/>
+          <path d="M3.5 17.7c0-3.4 2.9-4.9 6.5-4.9s6.5 1.5 6.5 4.9H3.5Z" fill="#76829B"/>
+        </svg>
+        <input type="text" placeholder="Логин Steam">
+        <span class="field__hint" title="Логин виден в настройках профиля Steam">i</span>
+      </label>
+
+      <div class="field field--amount">
+        <img class="field__coin" src="assets/img/coin.png" alt="" width="20" height="20">
+        <div class="field__amount-text">
+          <span class="field__label">Сумма</span>
+          <span class="field__value" id="amountValue">500₽</span>
+        </div>
+        <!-- 3. Переключатель валют: только визуальное состояние, пересчёта по ТЗ не требуется -->
+        <div class="currency" id="currency">
+          <button class="currency__btn is-active" type="button" data-cur="$">$</button>
+          <button class="currency__btn" type="button" data-cur="₸">₸</button>
+          <button class="currency__btn" type="button" data-cur="₽">₽</button>
+        </div>
+      </div>
+
+      <button class="btn btn--pay" type="button" id="payButton">Оплатить 500$</button>
+    </div>
+  </section>
+
+  <!-- 4. Ряды товаров -->
+  <section class="products">
+    <div class="products__head">
+      <h2 class="section-title">Популярные товары</h2>
+      <div class="chips">
+            <button class="chip is-active" type="button" data-tab="donate">Донат</button>
+            <button class="chip" type="button" data-tab="subscribes">Подписки</button>
+            <button class="chip" type="button" data-tab="items">Предметы</button>
+            <button class="chip" type="button" data-tab="accounts">Аккаунты</button>
+            <button class="chip" type="button" data-tab="keys">Ключи</button>
+            <button class="chip" type="button" data-tab="currency">Игровая валюта</button>
+            <button class="chip" type="button" data-tab="other">Другое</button>
+      </div>
+    </div>
+    <div class="grid">
+        <article class="card" data-sku="STEAM-TOPUP-500">
+            <div class="card__media card__media--art art--steam">
+              <img src="assets/img/steam.png" alt="" loading="lazy">
+            </div>
+          <div class="card__body">
+            <h3 class="card__title">💳 Пополнение Steam 500 ₽ ⚡ моментально</h3>
+            <p class="card__price">
+              <span class="card__price-now">500 ₽</span>
+              <span class="card__price-old">950 ₽</span>
+            </p>
+            <button class="btn btn--buy" type="button" data-sku="STEAM-TOPUP-500" data-price="500">Купить</button>
+          </div>
+        </article>
+        <article class="card" data-sku="KEY-CS2-PRIME">
+            <img class="card__media" src="assets/img/zombie.jpg" alt="" loading="lazy">
+          <div class="card__body">
+            <h3 class="card__title">🔫 CS2 Prime Status 🔑 STEAM KEY РФ+СНГ</h3>
+            <p class="card__price">
+              <span class="card__price-now">1 290 ₽</span>
+              <span class="card__price-old">2 450 ₽</span>
+            </p>
+            <button class="btn btn--buy" type="button" data-sku="KEY-CS2-PRIME" data-price="1290">Купить</button>
+          </div>
+        </article>
+        <article class="card" data-sku="KEY-GTA5">
+            <img class="card__media" src="assets/img/wildcat.jpg" alt="" loading="lazy">
+          <div class="card__body">
+            <h3 class="card__title">🚗 GTA V 🔑 ключ активации Steam</h3>
+            <p class="card__price">
+              <span class="card__price-now">1 990 ₽</span>
+              <span class="card__price-old">3 780 ₽</span>
+            </p>
+            <button class="btn btn--buy" type="button" data-sku="KEY-GTA5" data-price="1990">Купить</button>
+          </div>
+        </article>
+        <article class="card" data-sku="SUB-DISCORD-1M">
+            <div class="card__media card__media--art art--discord">
+              <span class="art__label">NITRO</span>
+            </div>
+          <div class="card__body">
+            <h3 class="card__title">💬 Discord Nitro 1 месяц ⚡ на ваш аккаунт</h3>
+            <p class="card__price">
+              <span class="card__price-now">399 ₽</span>
+              <span class="card__price-old">750 ₽</span>
+            </p>
+            <button class="btn btn--buy" type="button" data-sku="SUB-DISCORD-1M" data-price="399">Купить</button>
+          </div>
+        </article>
+        <article class="card" data-sku="GIFT-PSN-1000">
+            <div class="card__media card__media--art art--psn">
+              <img src="assets/img/playstation.png" alt="" loading="lazy">
+            </div>
+          <div class="card__body">
+            <h3 class="card__title">🎮 PlayStation Store карта 1000 ₽</h3>
+            <p class="card__price">
+              <span class="card__price-now">1 000 ₽</span>
+              <span class="card__price-old">1 900 ₽</span>
+            </p>
+            <button class="btn btn--buy" type="button" data-sku="GIFT-PSN-1000" data-price="1000">Купить</button>
+          </div>
+        </article>
+    </div>
+  </section>
+
+  <section class="products">
+    <div class="products__head">
+      <h2 class="section-title">Рекомендованные товары</h2>
+      <button class="btn btn--ghost" type="button">Показать все</button>
+    </div>
+    <div class="grid">
+        <article class="card" data-sku="KEY-EFT">
+            <img class="card__media" src="assets/img/rogue.jpg" alt="" loading="lazy">
+          <div class="card__body">
+            <h3 class="card__title">🪖 Escape from Tarkov 🔑 ключ активации</h3>
+            <p class="card__price">
+              <span class="card__price-now">3 490 ₽</span>
+              <span class="card__price-old">6 630 ₽</span>
+            </p>
+            <button class="btn btn--buy" type="button" data-sku="KEY-EFT" data-price="3490">Купить</button>
+          </div>
+        </article>
+        <article class="card" data-sku="SUB-YT-3M">
+            <div class="card__media card__media--art art--yt">
+              <span class="art__label">PREMIUM</span>
+            </div>
+          <div class="card__body">
+            <h3 class="card__title">▶️ YouTube Premium 3 месяца без рекламы</h3>
+            <p class="card__price">
+              <span class="card__price-now">1 490 ₽</span>
+              <span class="card__price-old">2 830 ₽</span>
+            </p>
+            <button class="btn btn--buy" type="button" data-sku="SUB-YT-3M" data-price="1490">Купить</button>
+          </div>
+        </article>
+        <article class="card" data-sku="GIFT-XBOX-1500">
+            <div class="card__media card__media--art art--xbox">
+              <span class="art__label">XBOX</span>
+            </div>
+          <div class="card__body">
+            <h3 class="card__title">🟢 Xbox Gift Card 1500 ₽ 🎁 регион RU</h3>
+            <p class="card__price">
+              <span class="card__price-now">1 500 ₽</span>
+              <span class="card__price-old">2 850 ₽</span>
+            </p>
+            <button class="btn btn--buy" type="button" data-sku="GIFT-XBOX-1500" data-price="1500">Купить</button>
+          </div>
+        </article>
+        <article class="card" data-sku="STEAM-TOPUP-1000">
+            <div class="card__media card__media--art art--steam">
+              <img src="assets/img/steam.png" alt="" loading="lazy">
+            </div>
+          <div class="card__body">
+            <h3 class="card__title">💳 Пополнение Steam 1000 ₽ ⚡ моментально</h3>
+            <p class="card__price">
+              <span class="card__price-now">1 000 ₽</span>
+              <span class="card__price-old">1 900 ₽</span>
+            </p>
+            <button class="btn btn--buy" type="button" data-sku="STEAM-TOPUP-1000" data-price="1000">Купить</button>
+          </div>
+        </article>
+        <article class="card" data-sku="SUB-SPOTIFY-1M">
+            <div class="card__media card__media--art art--spotify">
+              <span class="art__label">SPOTIFY</span>
+            </div>
+          <div class="card__body">
+            <h3 class="card__title">🎧 Spotify Premium 1 месяц 🔥</h3>
+            <p class="card__price">
+              <span class="card__price-now">299 ₽</span>
+              <span class="card__price-old">560 ₽</span>
+            </p>
+            <button class="btn btn--buy" type="button" data-sku="SUB-SPOTIFY-1M" data-price="299">Купить</button>
+          </div>
+        </article>
+    </div>
+  </section>
+
+  <section class="products">
+    <div class="products__head">
+      <h2 class="section-title">Другие товары</h2>
+      <button class="btn btn--ghost" type="button">Показать все</button>
+    </div>
+    <div class="grid">
+        <article class="card" data-sku="GIFT-ROBLOX-800">
+            <div class="card__media card__media--art art--roblox">
+              <img src="assets/img/roblox.png" alt="" loading="lazy">
+            </div>
+          <div class="card__body">
+            <h3 class="card__title">🟥 Roblox 800 Robux 🎁 на аккаунт</h3>
+            <p class="card__price">
+              <span class="card__price-now">890 ₽</span>
+              <span class="card__price-old">1 690 ₽</span>
+            </p>
+            <button class="btn btn--buy" type="button" data-sku="GIFT-ROBLOX-800" data-price="890">Купить</button>
+          </div>
+        </article>
+        <article class="card" data-sku="STEAM-TOPUP-2500">
+            <div class="card__media card__media--art art--steam">
+              <img src="assets/img/steam.png" alt="" loading="lazy">
+            </div>
+          <div class="card__body">
+            <h3 class="card__title">💳 Пополнение Steam 2500 ₽ ⚡ моментально</h3>
+            <p class="card__price">
+              <span class="card__price-now">2 500 ₽</span>
+              <span class="card__price-old">4 750 ₽</span>
+            </p>
+            <button class="btn btn--buy" type="button" data-sku="STEAM-TOPUP-2500" data-price="2500">Купить</button>
+          </div>
+        </article>
+        <article class="card" data-sku="KEY-CS2-PRIME">
+            <img class="card__media" src="assets/img/pubg.jpg" alt="" loading="lazy">
+          <div class="card__body">
+            <h3 class="card__title">🔫 CS2 Prime Status 🔑 STEAM KEY РФ+СНГ</h3>
+            <p class="card__price">
+              <span class="card__price-now">1 290 ₽</span>
+              <span class="card__price-old">2 450 ₽</span>
+            </p>
+            <button class="btn btn--buy" type="button" data-sku="KEY-CS2-PRIME" data-price="1290">Купить</button>
+          </div>
+        </article>
+        <article class="card" data-sku="KEY-GTA5">
+            <img class="card__media" src="assets/img/wildcat.jpg" alt="" loading="lazy">
+          <div class="card__body">
+            <h3 class="card__title">🚗 GTA V 🔑 ключ активации Steam</h3>
+            <p class="card__price">
+              <span class="card__price-now">1 990 ₽</span>
+              <span class="card__price-old">3 780 ₽</span>
+            </p>
+            <button class="btn btn--buy" type="button" data-sku="KEY-GTA5" data-price="1990">Купить</button>
+          </div>
+        </article>
+        <article class="card" data-sku="SUB-DISCORD-1M">
+            <div class="card__media card__media--art art--discord">
+              <span class="art__label">NITRO</span>
+            </div>
+          <div class="card__body">
+            <h3 class="card__title">💬 Discord Nitro 1 месяц ⚡ на ваш аккаунт</h3>
+            <p class="card__price">
+              <span class="card__price-now">399 ₽</span>
+              <span class="card__price-old">750 ₽</span>
+            </p>
+            <button class="btn btn--buy" type="button" data-sku="SUB-DISCORD-1M" data-price="399">Купить</button>
+          </div>
+        </article>
+    </div>
+  </section>
+
+  <!-- 5. Отзывы -->
+  <section class="reviews">
+    <div class="reviews__head">
+      <div>
+        <h2 class="section-title">Последние отзывы</h2>
+        <p class="reviews__note">Все отзывы взяты с независимой площадки</p>
+      </div>
+      <button class="btn btn--ghost" type="button">Показать все</button>
+    </div>
+    <div class="reviews__grid">
+        <article class="review">
+          <header class="review__head">
+            <img class="review__avatar" src="assets/img/avatar.jpg" alt="">
+            <div class="review__who">
+              <span class="review__name">Bizidin</span>
+              <span class="review__rating"><span class="stars">★★★★★</span> 5.0</span>
+            </div>
+            <time class="review__time">Сегодня в 11:48</time>
+          </header>
+          <p class="review__text">Отзывчивый и приятный продавец, помог не только с товаром но и с другим вопросом. Рекомендую!</p>
+          <a class="review__product" href="#">
+            <img src="assets/img/pubg.jpg" alt="">
+            <span class="review__product-name">🌸 FunTime | Полностью готовый сервер под ключ ⚡</span>
+            <span class="review__product-price">139 ₽</span>
+          </a>
+        </article>
+        <article class="review">
+          <header class="review__head">
+            <img class="review__avatar" src="assets/img/avatar.jpg" alt="">
+            <div class="review__who">
+              <span class="review__name">Kortez</span>
+              <span class="review__rating"><span class="stars">★★★★★</span> 5.0</span>
+            </div>
+            <time class="review__time">Сегодня в 10:12</time>
+          </header>
+          <p class="review__text">Ключ пришёл сразу после оплаты, активировался без проблем. Второй раз беру тут, всё чётко.</p>
+          <a class="review__product" href="#">
+            <img src="assets/img/pubg.jpg" alt="">
+            <span class="review__product-name">🔫 CS2 Prime Status 🔑 STEAM KEY РФ+СНГ</span>
+            <span class="review__product-price">1 290 ₽</span>
+          </a>
+        </article>
+        <article class="review">
+          <header class="review__head">
+            <img class="review__avatar" src="assets/img/avatar.jpg" alt="">
+            <div class="review__who">
+              <span class="review__name">mrShadow</span>
+              <span class="review__rating"><span class="stars">★★★★★</span> 5.0</span>
+            </div>
+            <time class="review__time">Вчера в 22:37</time>
+          </header>
+          <p class="review__text">Пополнение дошло за пару минут, комиссия честная. Поддержка ответила быстро, хотя вопрос был глупый.</p>
+          <a class="review__product" href="#">
+            <img src="assets/img/pubg.jpg" alt="">
+            <span class="review__product-name">💳 Пополнение Steam 1000 ₽ ⚡ моментально</span>
+            <span class="review__product-price">1 000 ₽</span>
+          </a>
+        </article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__row footer__row--top">
+    <nav class="footer__nav">
+      <a href="#">Стать продавцом</a>
+      <a href="#">Бонусы</a>
+      <a href="#">Поддержка</a>
+      <a href="#">Гарантии</a>
+      <a href="#">Отзывы</a>
+    </nav>
+  </div>
+
+  <div class="footer__row footer__row--mid">
+    <div class="footer__socials">
+      <a class="soc" href="#" aria-label="VK"><svg width="18" height="10" viewBox="0 0 18 10" fill="none"><path d="M17.4 1c.1-.4 0-.7-.6-.7h-2c-.5 0-.7.3-.8.5 0 0-1 2.4-2.3 3.9-.4.4-.6.6-.9.6-.1 0-.3-.2-.3-.6V1c0-.5-.2-.7-.6-.7H6.6c-.3 0-.5.2-.5.4 0 .5.7.6.8 1.9v2.9c0 .6-.1.7-.4.7-.7 0-2.2-2.4-3.1-5.2C3.2.5 3 .3 2.5.3H.5C0 .3 0 .5 0 .8c0 .5.7 3.1 3.1 6.5C4.7 9.6 7 10 9 10c1.2 0 1.4-.3 1.4-.7V7.5c0-.5.1-.6.4-.6.2 0 .6.1 1.5 1 1 1 1.2 1.5 1.8 1.5h2c.6 0 .8-.3.7-.8-.2-.5-.9-1.3-1.8-2.2-.5-.6-1.2-1.2-1.4-1.5-.3-.4-.2-.5 0-.9 0 0 2.4-3.4 2.6-4.5" fill="#000"/></svg></a>
+      <a class="soc" href="#" aria-label="Telegram"><svg width="18" height="16" viewBox="0 0 18 16" fill="none"><path d="M17.5.9 14.8 14c-.2.9-.7 1.1-1.5.7l-4.1-3-2 1.9c-.2.2-.4.4-.8.4l.3-4.2L14.3 3c.3-.3-.1-.4-.5-.2L4.5 8.6.5 7.4C-.4 7.1-.4 6.5.7 6.1L16.3.1c.7-.3 1.4.2 1.2.8Z" fill="#54A9FF"/></svg></a>
+      <a class="soc" href="#" aria-label="Discord"><svg width="14" height="17" viewBox="0 0 14 17" fill="none"><path d="M11.8 3.4A11 11 0 0 0 9 2.5l-.4.7a10 10 0 0 0-3.2 0L5 2.5c-1 .2-1.9.5-2.8 1C.6 6 .1 8.5.3 11a11 11 0 0 0 3.4 1.7l.7-1.1-1.2-.6.3-.2a7.9 7.9 0 0 0 6.8 0l.3.2-1.2.6.7 1.1A11 11 0 0 0 13.7 11c.3-2.9-.4-5.4-1.9-7.6ZM4.8 9.5c-.7 0-1.2-.6-1.2-1.4S4.1 6.7 4.8 6.7c.7 0 1.2.6 1.2 1.4s-.5 1.4-1.2 1.4Zm4.4 0c-.7 0-1.2-.6-1.2-1.4s.5-1.4 1.2-1.4c.7 0 1.2.6 1.2 1.4s-.5 1.4-1.2 1.4Z" fill="#000"/></svg></a>
+      <a class="soc" href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.5 5.3c-.2-.9-.9-1.5-1.7-1.7C13.2 3.2 9 3.2 9 3.2s-4.2 0-5.8.4c-.8.2-1.5.8-1.7 1.7C1.1 6.9 1.1 9 1.1 9s0 2.1.4 3.7c.2.9.9 1.5 1.7 1.7 1.6.4 5.8.4 5.8.4s4.2 0 5.8-.4c.8-.2 1.5-.8 1.7-1.7.4-1.6.4-3.7.4-3.7s0-2.1-.4-3.7ZM7.6 11.5v-5L11.8 9l-4.2 2.5Z" fill="#FF0000"/></svg></a>
+    </div>
+
+    <div class="footer__pay">
+      <span class="pay-badge pay-badge--visa">VISA</span>
+      <span class="pay-badge pay-badge--mir">мир</span>
+      <span class="pay-badge pay-badge--mc"><i></i><i></i></span>
+    </div>
+  </div>
+
+  <div class="footer__row footer__row--bottom">
+    <nav class="footer__legal">
+      <a href="#">Политика конфиденциальности</a>
+      <a href="#">Соглашение</a>
+      <a href="#">Договор-оферта</a>
+    </nav>
+    <p class="footer__copy">© 2025</p>
+  </div>
+</footer>
+
+<script src="assets/js/api.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

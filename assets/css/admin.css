@@ -1,0 +1,163 @@
+/*
+   Админка. Стоит на переменных и базе витринного styles.css,
+   здесь только своя раскладка: таблицы и панели.
+*/
+
+.adm {
+  width: 1060px;
+  margin: 0 auto;
+  padding: 32px 0 64px;
+}
+
+.adm__top {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.adm__title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-2);
+}
+
+.adm__link {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted-2);
+  text-decoration: none;
+}
+.adm__link:hover { color: var(--text); }
+
+.panel {
+  margin-bottom: 20px;
+  padding: 20px 24px;
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow-block);
+}
+
+.panel__head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.panel__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-2);
+}
+
+.panel__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.panel__field {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted-2);
+}
+
+.panel__note {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.panel__note--bad { color: #D14343; }
+
+#authPanel { display: flex; align-items: center; gap: 12px; }
+
+.panel input,
+.panel select {
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  background: var(--white);
+  font: 600 14px Montserrat, sans-serif;
+  color: var(--text);
+  outline: none;
+}
+.panel input:focus,
+.panel select:focus { border-color: #C7CDD8; }
+#tokenInput { width: 320px; }
+#refillCount { width: 90px; }
+
+.adm-btn {
+  height: 38px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 10px;
+  background: #000;
+  color: var(--white);
+  font: 700 13px Montserrat, sans-serif;
+  cursor: pointer;
+}
+.adm-btn:hover { background: #1c1c1c; }
+.adm-btn:disabled { opacity: .5; cursor: default; }
+
+.adm-btn--ghost {
+  border: 1px solid var(--line-2);
+  background: var(--white);
+  color: var(--muted-2);
+}
+.adm-btn--ghost:hover { background: var(--bg); color: var(--text); }
+
+.adm-btn--small { height: 30px; padding: 0 12px; font-size: 12px; }
+
+/* Фильтры статусов — те же чипы, что над рядом товаров, только помельче */
+.filters { display: flex; gap: 8px; margin-left: auto; }
+
+.filter {
+  height: 30px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--muted-2);
+  font: 700 12px Montserrat, sans-serif;
+}
+.filter:hover { color: var(--text); }
+.filter.is-active { background: #000; color: var(--white); }
+
+.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+/* Три коротких столбца незачем растягивать на всю панель */
+.tbl--narrow { width: 560px; }
+
+.tbl th {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line-2);
+  text-align: left;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.tbl td {
+  padding: 10px;
+  border-bottom: 1px solid var(--line);
+  font-weight: 600;
+  color: var(--text);
+}
+.tbl tr:last-child td { border-bottom: 0; }
+
+.tbl__cell--code { font-family: "Courier New", monospace; letter-spacing: 1px; }
+.tbl__cell--ok { color: var(--green); }
+.tbl__cell--bad { color: #D14343; }
+.tbl__cell--wait { color: var(--muted-2); }

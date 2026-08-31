@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>Заказ — магазин цифровых товаров</title>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<main class="order">
+  <a class="order__back" href="index.html">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M9.5 3.5 5 8l4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Вернуться в магазин
+  </a>
+
+  <!-- Разметка статичная, JS только подставляет тексты и прячет лишнее:
+       так не приходится собирать HTML строками и экранировать данные -->
+  <section class="order-card" id="orderCard" hidden>
+    <div class="order-card__head">
+      <img class="order-card__img" id="orderImage" src="" alt="" hidden>
+      <div class="order-card__about">
+        <h1 class="order-card__title" id="orderTitle"></h1>
+        <p class="order-card__id">Заказ <span id="orderId"></span></p>
+      </div>
+      <span class="order-status" id="orderStatus"></span>
+    </div>
+
+    <dl class="order-sum">
+      <div class="order-sum__row">
+        <dt>Цена</dt>
+        <dd id="sumBase"></dd>
+      </div>
+      <div class="order-sum__row" id="sumDiscountRow" hidden>
+        <dt id="sumPromo">Скидка</dt>
+        <dd id="sumDiscount"></dd>
+      </div>
+      <div class="order-sum__row order-sum__row--total">
+        <dt>К оплате</dt>
+        <dd id="sumTotal"></dd>
+      </div>
+    </dl>
+
+    <div class="order-pay" id="orderPay" hidden>
+      <button class="btn btn--pay" type="button" id="payOk">Оплатить</button>
+      <button class="btn btn--ghost" type="button" id="payFail">Оплата не прошла</button>
+      <p class="order-hint">
+        Настоящего эквайринга здесь нет. Обе кнопки отправляют магазину такой же
+        вебхук, какой прислала бы платёжная система, — на этом и держится выдача.
+      </p>
+    </div>
+
+    <div class="order-key" id="orderKey" hidden>
+      <span class="order-key__label">Ваш ключ</span>
+      <div class="order-key__row">
+        <code class="order-key__code" id="keyCode"></code>
+        <button class="btn btn--ghost" type="button" id="copyKey">Скопировать</button>
+      </div>
+    </div>
+
+    <p class="order-note" id="orderNote" hidden></p>
+    <button class="order-refresh" type="button" id="refreshBtn" hidden>Обновить статус</button>
+  </section>
+
+  <p class="order-error" id="orderError" hidden></p>
+</main>
+
+<script src="assets/js/api.js"></script>
+<script src="assets/js/order.js"></script>
+</body>
+</html>

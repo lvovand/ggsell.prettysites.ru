@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1100">
+<title>Админка — магазин цифровых товаров</title>
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+
+<div class="adm">
+  <header class="adm__top">
+    <h1 class="adm__title">Заказы и склад</h1>
+    <a class="adm__link" href="../index.html">На витрину</a>
+  </header>
+
+  <!-- Полноценной авторизации по ТЗ не требуется, поэтому вход — это просто
+       токен, который уходит в заголовке каждого запроса -->
+  <section class="panel" id="authPanel">
+    <label class="panel__field">
+      <span>Токен админки</span>
+      <input type="password" id="tokenInput" autocomplete="off" placeholder="X-Admin-Token">
+    </label>
+    <button class="adm-btn" type="button" id="loginBtn">Войти</button>
+    <p class="panel__note" id="authNote" hidden></p>
+  </section>
+
+  <div id="workspace" hidden>
+    <section class="panel">
+      <div class="panel__head">
+        <h2 class="panel__title">Склад поставщиков</h2>
+        <button class="adm-btn adm-btn--ghost" type="button" id="reloadStock">Обновить</button>
+      </div>
+
+      <table class="tbl tbl--narrow">
+        <thead>
+          <tr><th>Поставщик</th><th>Всего кодов</th><th>Свободно</th></tr>
+        </thead>
+        <tbody id="stockBody"></tbody>
+      </table>
+
+      <div class="panel__row">
+        <select id="refillSupplier">
+          <option value="A">Поставщик A</option>
+          <option value="B">Поставщик B</option>
+        </select>
+        <input type="number" id="refillCount" value="10" min="1" max="200">
+        <button class="adm-btn" type="button" id="refillBtn">Пополнить</button>
+        <button class="adm-btn adm-btn--ghost" type="button" id="replayBtn" title="Применить вебхуки, пришедшие раньше своих заказов">
+          Догнать вебхуки
+        </button>
+        <span class="panel__note" id="stockNote" hidden></span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel__head">
+        <h2 class="panel__title">Заказы</h2>
+        <div class="filters" id="filters">
+          <button class="filter is-active" type="button" data-status="stuck">Оплачен, но не выдан</button>
+          <button class="filter" type="button" data-status="">Все</button>
+          <button class="filter" type="button" data-status="delivered">Выданные</button>
+          <button class="filter" type="button" data-status="created">Ждут оплаты</button>
+        </div>
+        <button class="adm-btn adm-btn--ghost" type="button" id="reloadOrders">Обновить</button>
+      </div>
+
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>Заказ</th><th>Товар</th><th>Сумма</th><th>Статус</th>
+            <th>Ключ</th><th>Создан</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="ordersBody"></tbody>
+      </table>
+      <p class="panel__note" id="ordersNote" hidden></p>
+    </section>
+  </div>
+</div>
+
+<script src="../assets/js/api.js"></script>
+<script src="../assets/js/admin.js"></script>
+</body>
+</html>
