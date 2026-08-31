@@ -1,0 +1,4 @@
+# Всё, что приходит в /api/, разбирает один index.php
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]

@@ -1,0 +1,7 @@
+app/config.local.php
+*.log
+.DS_Store
+
+# Рабочие заметки по ходу задачи, в репозиторий не идут
+TODO.md
+CONTEXT.md

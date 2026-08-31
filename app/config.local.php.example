@@ -1,0 +1,12 @@
+<?php
+// Скопировать в config.local.php и подставить свои значения.
+
+return [
+    'db' => [
+        'host'     => '127.0.0.1',
+        'name'     => 'ggsell_prett',
+        'user'     => 'ggsell_prett',
+        'password' => 'пароль от базы',
+    ],
+    'admin_token' => 'длинная случайная строка',
+];
